@@ -4890,7 +4890,7 @@ void GPUMatrix<ElemType>::ComputeBiVfsmnLeftFilterGradient(
 
     CUDA_LONG rows = (CUDA_LONG) gradientValues.GetNumRows();
     CUDA_LONG cols = (CUDA_LONG) gradientValues.GetNumCols();
-    const int CU1DBLOCK = 256;
+    const int CU1DBLOCK = GridDim::maxThreadsPerBlock;
     dim3 dimBlock(CU1DBLOCK);
     dim3 dimGrid(rows * l_order);
 
@@ -4921,7 +4921,7 @@ void GPUMatrix<ElemType>::ComputeBiVfsmnRightFilterGradient(
 
     CUDA_LONG rows = (CUDA_LONG) gradientValues.GetNumRows();
     CUDA_LONG cols = (CUDA_LONG) gradientValues.GetNumCols();
-    const int CU1DBLOCK = 256;
+    const int CU1DBLOCK = GridDim::maxThreadsPerBlock;
     dim3 dimBlock(CU1DBLOCK);
     dim3 dimGrid(rows * r_order);
 

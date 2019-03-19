@@ -5356,7 +5356,7 @@ __global__ void _computeBiVfsmnLeftFilterGradient(
     const CUDA_LONG padding,
     ElemType* out)             // D x T, left filter gradient
 {
-    const int CU1DBLOCK = 256;
+    const int CU1DBLOCK = GridDim::maxThreadsPerBlock;
 
     int j = blockIdx.x;
     int THREADS = blockDim.x;
@@ -5456,7 +5456,7 @@ __global__ void _computeBiVfsmnRightFilterGradient(
     const CUDA_LONG padding,
     ElemType* out)             // D x T, right filter gradient
 {
-    const int CU1DBLOCK = 256;
+    const int CU1DBLOCK = GridDim::maxThreadsPerBlock;
 
     int j = blockIdx.x;
     int THREADS = blockDim.x;
